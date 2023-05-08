@@ -1,7 +1,9 @@
-# appointment-api
+# Appointment-API
+
+## Introduction
 Backend REST API for booking appointments with doctors. Built with JavaScript, Node.js, and MySQL
 
-# Planning the API
+## Planning the API
 
 ###  URL endpoints for a Backend REST API for booking appointments with doctors:
 
