@@ -1,7 +1,7 @@
 {
-  "name": "playerstat-api",
+  "name": "appointments-api",
   "version": "1.0.0",
-  "description": "playerstat-api -- A Node.js REST API for quickly retrieving player stats data.",
+  "description": "appointments-api -- A Node.js REST API for quickly retrieving and editing appointments.",
   "main": "index.js",
   "scripts": {
       "start": "node index.js",
