@@ -117,6 +117,6 @@ const deleteAppointment = async (req, res, next) => {
     }
 };
 
-router.route("/api/v1/stats/:id").delete(deleteAppointment);
+router.route("/api/v1/appointments/:id").delete(deleteAppointment);
 
 module.exports = router;
