@@ -1,118 +1,122 @@
-//GET Method
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
 
 const router = express.Router();
+const appointmentsFilePath = path.join(__dirname, "./appointments.json");
 
-const getAppointments = async (req, res, next) => {
-    try {
-        const data = fs.readFileSync(path.join(__dirname, "./appointments.json"));
-        const stats = JSON.parse(data);
-        const playerStats = stats.find(
-            (player) => player.id === Number(req.params.id)
-        );
-        if (!playerStats) {
-            const err = new Error("Player stats not found");
-            err.status = 404;
-            throw err;
+// GET method
+const getAppointment = async (req, res, next) => {
+  try {
+    const data = fs.readFileSync(appointmentsFilePath);
+    const appointments = JSON.parse(data);
+    const appointment = appointments.find(
+      (appointment) => appointment.id === Number(req.params.id)
+    );
+    if (!appointment) {
+      const err = new Error("Appointment not found");
+      err.status = 404;
+      throw err;
+    }
+    res.json(appointment);
+  } catch (e) {
+    next(e);
+  }
+};
+
+router.route("/api/v1/appointments/:id").get(getAppointment);
+
+// POST method
+const createAppointment = async (req, res, next) => {
+  try {
+    const data = fs.readFileSync(appointmentsFilePath);
+    const appointments = JSON.parse(data);
+    const newAppointment = {
+      id: req.body.id,
+      doctor_id: req.body.doctor_id,
+      patient_id: req.body.patient_id,
+      appointment_time: req.body.appointment_time,
+      duration: req.body.duration,
+      reason: req.body.reason,
+      status: req.body.status,
+    };
+    appointments.push(newAppointment);
+    fs.writeFileSync(appointmentsFilePath, JSON.stringify(appointments));
+    res.status(201).json(newAppointment);
+  } catch (e) {
+    next(e);
+  }
+};
+
+router.route("/api/v1/appointments").post(createAppointment);
+
+// PUT method
+const updateAppointment = async (req, res, next) => {
+  try {
+    const data = fs.readFileSync(appointmentsFilePath);
+    const appointments = JSON.parse(data);
+    const appointment = appointments.find(
+      (appointment) => appointment.id === Number(req.params.id)
+    );
+    if (!appointment) {
+      const err = new Error("Appointment not found");
+      err.status = 404;
+      throw err;
+    }
+    const updatedAppointmentData = {
+      id: req.body.id,
+      doctor_id: req.body.doctor_id,
+      patient_id: req.body.patient_id,
+      appointment_time: req.body.appointment_time,
+      duration: req.body.duration,
+      reason: req.body.reason,
+      status: req.body.status,
+    };
+    const updatedAppointments = appointments.map((appointment) => {
+      if (appointment.id === Number(req.params.id)) {
+        return updatedAppointmentData;
+      } else {
+        return appointment;
+      }
+    });
+    fs.writeFileSync(appointmentsFilePath, JSON.stringify(updatedAppointments));
+    res.status(200).json(updatedAppointmentData);
+  } catch (e) {
+    next(e);
+  }
+};
+
+router.route("/api/v1/appointments/:id").put(updateAppointment);
+
+// DELETE method
+const deleteAppointment = async (req, res, next) => {
+  try {
+    const data = fs.readFileSync(appointmentsFilePath);
+    const appointments = JSON.parse(data);
+    const appointment = appointments.find(
+      (appointment) => appointment.id === Number(req.params.id)
+    );
+    if (!appointment) {
+      const err = new Error("Appointment not found");
+      err.status = 404;
+      throw err;
+    }
+    const updatedAppointments = appointments
+      .map((appointment) => {
+        if (appointment.id === Number(req.params.id)) {
+          return null;
+        } else {
+          return appointment;
         }
-        res.json(playerStats);
+      })
+      .filter((appointment) => appointment !== null);
+    fs.writeFileSync(appointmentsFilePath, JSON.stringify(updatedAppointments));
+    res.status(200).end();
     } catch (e) {
         next(e);
     }
 };
 
-router.route("/api/v1/stats/:id").get(getStats);
-
-module.exports = router;
-
-const statsFilePath = path.join(__dirname, "./stats.json");
-//POST Method
-const createStats = async (req, res, next) => {
-    try {
-        const data = fs.readFileSync(statsFilePath);
-        const stats = JSON.parse(data);
-        const newStats = {
-            id: req.body.id,
-            wins: req.body.wins,
-            losses: req.body.losses,
-            points_scored: req.body.points_scored,
-        };
-        stats.push(newStats);
-        fs.writeFileSync(statsFilePath, JSON.stringify(stats));
-        res.status(201).json(newStats);
-    } catch (e) {
-        next(e);
-    }
-};
-
-router.route("/api/v1/stats").post(createStats);
-
-//PUT Method
-const updateStats = async (req, res, next) => {
-    try {
-        const data = fs.readFileSync(statsFilePath);
-        const stats = JSON.parse(data);
-        const playerStats = stats.find(
-            (player) => player.id === Number(req.params.id)
-        );
-        if (!playerStats) {
-            const err = new Error("Player stats not found");
-            err.status = 404;
-            throw err;
-        }
-        const newStatsData = {
-            id: req.body.id,
-            wins: req.body.wins,
-            losses: req.body.losses,
-            points_scored: req.body.points_scored,
-        };
-        const newStats = stats.map((player) => {
-            if (player.id === Number(req.params.id)) {
-                return newStatsData;
-            } else {
-                return player;
-            }
-        });
-        fs.writeFileSync(statsFilePath, JSON.stringify(newStats));
-        res.status(200).json(newStatsData);
-    } catch (e) {
-        next(e);
-    }
-};
-
-router.route("/api/v1/stats/:id").get(getStats).put(updateStats);
-
-//DELETE Method
-const deleteStats = async (req, res, next) => {
-    try {
-        const data = fs.readFileSync(statsFilePath);
-        const stats = JSON.parse(data);
-        const playerStats = stats.find(
-            (player) => player.id === Number(req.params.id)
-        );
-        if (!playerStats) {
-            const err = new Error("Player stats not found");
-            err.status = 404;
-            throw err;
-        }
-        const newStats = stats
-            .map((player) => {
-                if (player.id === Number(req.params.id)) {
-                    return null;
-                } else {
-                    return player;
-                }
-            })
-            .filter((player) => player !== null);
-        fs.writeFileSync(statsFilePath, JSON.stringify(newStats));
-        res.status(200).end();
-    } catch (e) {
-        next(e);
-    }
-};
-
-router.route("/api/v1/stats/:id").delete(deleteStats);
+router.route("/api/v1/stats/:id").delete(deleteAppointment);
 
 module.exports = router;
