@@ -5,6 +5,19 @@ const path = require("path");
 const router = express.Router();
 const appointmentsFilePath = path.join(__dirname, "./appointments.json");
 
+//GET method (ALL!)
+const getAllAppointment = async (req, res, next) => {
+    try {
+        const data = fs.readFileSync(appointmentsFilePath);
+        const appointments = JSON.parse(data);
+        res.json(appointments);
+    } catch (e) {
+        next(e);
+    }
+};
+
+router.route("/api/v1/appointments").get(getAllAppointment);
+
 // GET method
 const getAppointment = async (req, res, next) => {
   try {
