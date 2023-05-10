@@ -5,14 +5,13 @@
 2. [Languages and Tools](#languages-and-tools)
 3. [Planning the API](#planning-the-api)
 3. [Features](#features)
-4. [Installation](installation)
+4. [Installation](#installation)
 3. [Usage](#usage)
 4. [License](#license)
 5. [Acknowledgements](#acknowledgements)
 
 ## Introduction
 A backend REST API that allows users to book, update, retrieve, and delete appointments with doctors.
-
 
 ## Languages and Tools
 1. JavaScript
