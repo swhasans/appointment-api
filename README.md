@@ -31,17 +31,17 @@ A backend REST API that allows users to book, update, retrieve, and delete appoi
 
 ###  URL endpoints for a Backend REST API for booking appointments with doctors:
 
-- GET https://www.ourapi.com/api/v1/appointments – This will retrieve a list of all appointments.
+- GET http://localhost:'PORT'/api/v1/appointments – This will retrieve a list of all appointments.
 
-- GET https://www.ourapi.com/api/v1/appointments/101 – This will retrieve the details of appointment 101.
+- GET http://localhost:'PORT'/api/v1/appointments/101 – This will retrieve the details of appointment 101.
 
-- POST https://www.ourapi.com/api/v1/appointments – This will create a new appointment.
+- POST http://localhost:'PORT'/api/v1/appointments – This will create a new appointment.
 
-- PUT https://www.ourapi.com/api/v1/appointments/101 – This will update the details of appointment 101.
+- PUT http://localhost:'PORT'/api/v1/appointments/101 – This will update the details of appointment 101.
 
-- DELETE https://www.ourapi.com/api/v1/appointments/101 – This will delete appointment 101.
+- DELETE http://localhost:'PORT'/api/v1/appointments/101 – This will delete appointment 101.
 
-####  JSON Structure:
+###  JSON Structure:
 - Each record will contain the following details:
 
 1. an ID of the appointment
@@ -72,4 +72,4 @@ A backend REST API that allows users to book, update, retrieve, and delete appoi
 - This project is licensed under the ISC license - see the LICENSE.md file for details.
 
 ## Acknowledgements
-This project was inspired by The Odin Project.
+- [How to Build a RESTful API in Node.js (with Express.js) By Kelly Arellano](https://rapidapi.com/blog/nodejs-express-rest-api-example/)
