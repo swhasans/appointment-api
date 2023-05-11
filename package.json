@@ -4,14 +4,14 @@
   "description": "appointments-api -- A Node.js REST API for quickly retrieving and editing appointments.",
   "main": "index.js",
   "scripts": {
-      "start": "node index.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Syed W. Hasan",
   "license": "ISC",
   "dependencies": {
-      "body-parser": "^1.20.2",
-      "express": "^4.18.2",
-      "morgan": "^1.10.0"
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
   }
 }
