@@ -7,13 +7,13 @@ const appointmentsFilePath = path.join(__dirname, "./appointments.json");
 
 //GET method (ALL!)
 const getAllAppointment = async (req, res, next) => {
-    try {
-        const data = fs.readFileSync(appointmentsFilePath);
-        const appointments = JSON.parse(data);
-        res.json(appointments);
-    } catch (e) {
-        next(e);
-    }
+  try {
+    const data = fs.readFileSync(appointmentsFilePath);
+    const appointments = JSON.parse(data);
+    res.json(appointments);
+  } catch (e) {
+    next(e);
+  }
 };
 
 router.route("/api/v1/appointments").get(getAllAppointment);
@@ -125,9 +125,9 @@ const deleteAppointment = async (req, res, next) => {
       .filter((appointment) => appointment !== null);
     fs.writeFileSync(appointmentsFilePath, JSON.stringify(updatedAppointments));
     res.status(200).end();
-    } catch (e) {
-        next(e);
-    }
+  } catch (e) {
+    next(e);
+  }
 };
 
 router.route("/api/v1/appointments/:id").delete(deleteAppointment);
