@@ -1,7 +1,5 @@
 const fs = require("fs");
-const path = require("path");
-
-const appointmentsFilePath = path.join(__dirname, "../routes/appointments.json");
+const appointmentsFilePath = "./routes/appointments.json";
 
 //GET method (ALL!)
 const getAllAppointment = async (req, res, next) => {
@@ -48,12 +46,14 @@ const createAppointment = async (req, res, next) => {
             status: req.body.status,
         };
         appointments.push(newAppointment);
-        fs.writeFileSync(appointmentsFilePath, JSON.stringify(appointments));
+        const updatedAppointmentsJSON = JSON.stringify(appointments);
+        fs.writeFileSync(appointmentsFilePath, updatedAppointmentsJSON, "utf-8");
         res.status(201).json(newAppointment);
     } catch (e) {
         next(e);
     }
 };
+
 
 // PUT method
 const updateAppointment = async (req, res, next) => {

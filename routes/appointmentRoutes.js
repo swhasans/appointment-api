@@ -4,18 +4,18 @@ const router = express.Router();
 const appointmentController = require("../controllers/appointmentControllers.js");
 
 //GET method (ALL!)
-router.route("/api/v1/appointments").get(appointmentController.getAllAppointment);
+router.get("/api/v1/appointments", appointmentController.getAllAppointment);
 
 // GET method
-router.route("/api/v1/appointments/:id").get(appointmentController.getAppointment);
+router.get("/api/v1/appointments/:id", appointmentController.getAppointment);
 
 // POST method
-router.route("/api/v1/appointments").post(appointmentController.createAppointment);
+router.post("/api/v1/appointments", appointmentController.createAppointment);
 
 // PUT method
-router.route("/api/v1/appointments/:id").put(appointmentController.updateAppointment);
+router.put("/api/v1/appointments/:id", appointmentController.updateAppointment);
 
 // DELETE method
-router.route("/api/v1/appointments/:id").delete(appointmentController.deleteAppointment);
+router.delete(appointmentController.deleteAppointment);
 
 module.exports = router;
