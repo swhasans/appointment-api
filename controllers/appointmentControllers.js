@@ -1,8 +1,6 @@
-const express = require("express");
 const fs = require("fs");
 const path = require("path");
 
-const router = express.Router();
 const appointmentsFilePath = path.join(__dirname, "./appointments.json");
 
 //GET method (ALL!)
@@ -15,8 +13,6 @@ const getAllAppointment = async (req, res, next) => {
         next(e);
     }
 };
-
-router.route("/api/v1/appointments").get(getAllAppointment);
 
 // GET method
 const getAppointment = async (req, res, next) => {
@@ -36,8 +32,6 @@ const getAppointment = async (req, res, next) => {
         next(e);
     }
 };
-
-router.route("/api/v1/appointments/:id").get(getAppointment);
 
 // POST method
 const createAppointment = async (req, res, next) => {
@@ -60,8 +54,6 @@ const createAppointment = async (req, res, next) => {
         next(e);
     }
 };
-
-router.route("/api/v1/appointments").post(createAppointment);
 
 // PUT method
 const updateAppointment = async (req, res, next) => {
@@ -99,8 +91,6 @@ const updateAppointment = async (req, res, next) => {
     }
 };
 
-router.route("/api/v1/appointments/:id").put(updateAppointment);
-
 // DELETE method
 const deleteAppointment = async (req, res, next) => {
     try {
@@ -129,8 +119,6 @@ const deleteAppointment = async (req, res, next) => {
         next(e);
     }
 };
-
-router.route("/api/v1/appointments/:id").delete(deleteAppointment);
 
 module.exports = {
     getAllAppointment,
