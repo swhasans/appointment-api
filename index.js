@@ -1,7 +1,7 @@
 const express = require("express"); // Import the Express module 
 const morgan = require("morgan"); // Import the Morgan module for logging HTTP requests
 const appointmentRoutes = require("./routes/appointmentRoutes.js"); // Import the appointmentRoutes module
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); // Import the bodyParser module for parsing JSON request bodies
 
 // Express app
 const app = express(); // Create an Express application
@@ -10,7 +10,7 @@ const port = 3000; // Specify the port number for the server
 // Middleware
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
 app.use(morgan("dev")); // Log HTTP requests in the console using Morgan
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // Parse JSON request bodies
 
 app.listen(port, "localhost", () => {
   console.log(`Listening for requests on port: ${port}`);
