@@ -9,7 +9,7 @@ const app = express(); // Create an Express application
 const port = 3000; // Specify the port number for the server
 
 // Connect to MongoDB
-const dbURI = "mongodb+srv://<username>:<password>@nodeexpressapp.bl1lxtc.mongodb.net/<database_name>?retryWrites=true&w=majority";
+const dbURI = "mongodb+srv://swaddodhassan2001:<password>@nodeexpressapp.ghra5em.mongodb.net/?retryWrites=true&w=majority"
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }) // Connect to MongoDB using the provided URI and options
     .then((results) => {
         // Start the server and listen for requests on the specified port
