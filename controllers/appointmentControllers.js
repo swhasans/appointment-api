@@ -1,15 +1,16 @@
 const fs = require("fs");
+const Appointment = require("../models/appointment.js");
 const appointmentsFilePath = "./routes/appointments.json";
 
 //GET method (ALL!)
 const getAllAppointment = (req, res, next) => {
-    try {
-        const data = fs.readFileSync(appointmentsFilePath);
-        const appointments = JSON.parse(data);
-        res.json(appointments);
-    } catch (e) {
-        next(e);
-    }
+    Appointment.find().sort({ createdAt: -1 })
+               .then((result) => {
+                    res.send(result);
+               })
+               .catch((err) =>{
+                    console.log(err);
+               }); 
 };
 
 // GET method
