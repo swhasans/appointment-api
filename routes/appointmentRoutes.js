@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const appointmentController = require("../controllers/appointmentControllers.js"); 
+const appointmentController = require("../controllers/appointmentControllers.js");
 
 //GET method (ALL!)
 router.route("/api/v1/appointments").get(appointmentController.getAllAppointment);
