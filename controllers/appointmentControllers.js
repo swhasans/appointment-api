@@ -121,9 +121,9 @@ const deleteAppointment = (req, res, next) => {
 };
 
 module.exports = {
-    getAllAppointment,
-    getAppointment,
-    createAppointment,
-    updateAppointment,
-    deleteAppointment
+    getAllAppointment, // Fetches all appointments
+    getAppointment, // Fetches a specific appointment by ID
+    createAppointment, // Creates a new appointment
+    updateAppointment, // Updates an existing appointment by ID
+    deleteAppointment // Deletes an appointment by ID
 };
