@@ -1,5 +1,6 @@
 const express = require("express"); // Import the Express module 
 const morgan = require("morgan"); // Import the Morgan module for logging HTTP requests
+const mongoose = require("mongoose"); // Import the Mongoose module for MongoDB connection
 const appointmentRoutes = require("./routes/appointmentRoutes.js"); // Import the appointmentRoutes module
 const bodyParser = require('body-parser'); // Import the bodyParser module for parsing JSON request bodies
 
