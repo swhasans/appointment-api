@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const appointmentsFilePath = path.join(__dirname, "./appointments.json");
+const appointmentsFilePath = path.join(__dirname, "../routes/appointments.json");
 
 //GET method (ALL!)
 const getAllAppointment = async (req, res, next) => {

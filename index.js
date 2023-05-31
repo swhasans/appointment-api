@@ -1,19 +1,20 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const logger = require('morgan');
-const path = require('path');
-const app = express();
+const express = require("express"); // Import the Express module 
+const morgan = require("morgan"); // Import the Morgan module for logging HTTP requests
+const appointmentRoutes = require("./routes/appointmentRoutes.js"); // Import the blogRoutes module
 
-const PORT = process.env.PORT || 3000;
-const NODE_ENV = process.env.NODE_ENV || 'development';
+// Express app
+const app = express(); // Create an Express application
+const port = 3000; // Specify the port number for the server
 
-app.set('port', PORT);
-app.set('env', NODE_ENV);
+// Middleware
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
+app.use(morgan("dev")); // Log HTTP requests in the console using Morgan
 
-app.use(logger('tiny'));
-app.use(bodyParser.json());
+app.listen(port, "localhost", () => {
+  console.log(`Listening for requests on port: ${port}`);
+});
 
-app.use('/', require(path.join(__dirname, 'routes/appointments')));
+app.use('/', appointmentRoutes);
 
 app.use((req, res, next) => {
   const err = new Error(`${req.method} ${req.url} Not Found`);
@@ -29,12 +30,4 @@ app.use((err, req, res, next) => {
       message: err.message,
     },
   });
-});
-
-app.listen(PORT, () => {
-  console.log(
-    `Express Server started on Port ${app.get(
-      'port'
-    )} | Environment : ${app.get('env')}`
-  );
 });
