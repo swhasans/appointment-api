@@ -1,6 +1,6 @@
 const express = require("express"); // Import the Express module 
 const morgan = require("morgan"); // Import the Morgan module for logging HTTP requests
-const appointmentRoutes = require("./routes/appointmentRoutes.js"); // Import the blogRoutes module
+const appointmentRoutes = require("./routes/appointmentRoutes.js"); // Import the appointmentRoutes module
 
 // Express app
 const app = express(); // Create an Express application
@@ -14,20 +14,14 @@ app.listen(port, "localhost", () => {
   console.log(`Listening for requests on port: ${port}`);
 });
 
-app.use('/', appointmentRoutes);
+app.use('/', appointmentRoutes); // Use appointmentRoutes for handling routes starting with '/'
 
-app.use((req, res, next) => {
-  const err = new Error(`${req.method} ${req.url} Not Found`);
-  err.status = 404;
-  next(err);
+// Render the "404" view for any unmatched routes (404 Not Found)
+app.use((req, res) => {
+  res.status(404).render("404", { title: "Not Found" });
 });
 
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(err.status || 500);
-  res.json({
-    error: {
-      message: err.message,
-    },
-  });
+// Render the "500" view for internal server errors (500 Internal Server Error)
+app.use((req, res) => {
+  res.status(500).render("500", { title: "Internal Server Error" });
 });
