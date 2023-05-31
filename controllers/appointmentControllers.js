@@ -2,7 +2,7 @@ const fs = require("fs");
 const appointmentsFilePath = "./routes/appointments.json";
 
 //GET method (ALL!)
-const getAllAppointment = async (req, res, next) => {
+const getAllAppointment = (req, res, next) => {
     try {
         const data = fs.readFileSync(appointmentsFilePath);
         const appointments = JSON.parse(data);
@@ -13,7 +13,7 @@ const getAllAppointment = async (req, res, next) => {
 };
 
 // GET method
-const getAppointment = async (req, res, next) => {
+const getAppointment = (req, res, next) => {
     try {
         const data = fs.readFileSync(appointmentsFilePath);
         const appointments = JSON.parse(data);
@@ -32,7 +32,7 @@ const getAppointment = async (req, res, next) => {
 };
 
 // POST method
-const createAppointment = async (req, res, next) => {
+const createAppointment = (req, res, next) => {
     try {
         const data = fs.readFileSync(appointmentsFilePath);
         const appointments = JSON.parse(data);
@@ -56,7 +56,7 @@ const createAppointment = async (req, res, next) => {
 
 
 // PUT method
-const updateAppointment = async (req, res, next) => {
+const updateAppointment = (req, res, next) => {
     try {
         const data = fs.readFileSync(appointmentsFilePath);
         const appointments = JSON.parse(data);
@@ -92,7 +92,7 @@ const updateAppointment = async (req, res, next) => {
 };
 
 // DELETE method
-const deleteAppointment = async (req, res, next) => {
+const deleteAppointment = (req, res, next) => {
     try {
         const data = fs.readFileSync(appointmentsFilePath);
         const appointments = JSON.parse(data);
