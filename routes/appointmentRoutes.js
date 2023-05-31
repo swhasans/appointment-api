@@ -16,7 +16,6 @@ router.route("/api/v1/appointments").post(appointmentController.createAppointmen
 router.route("/api/v1/appointments/:id").put(appointmentController.updateAppointment);
 
 // DELETE method
-
 router.route("/api/v1/appointments/:id").delete(appointmentController.deleteAppointment);
 
 module.exports = router;
