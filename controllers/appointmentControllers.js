@@ -30,7 +30,6 @@ const createAppointment = (req, res) => {
     const appointment = new Appointment({
         doctor_id: req.body.doctor_id,
         patient_id: req.body.patient_id,
-        appointment_time: req.body.appointment_time,
         duration: req.body.duration,
         reason: req.body.reason,
         status: req.body.status,
