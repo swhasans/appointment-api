@@ -1,6 +1,5 @@
 const fs = require("fs");
 const Appointment = require("../models/appointment.js");
-const appointmentsFilePath = "./routes/appointments.json";
 
 // GET method (Fetches all appointments)
 const getAllAppointment = (req, res) => {
