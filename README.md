@@ -2,73 +2,66 @@
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Languages and Tools](#languages-and-tools)
-3. [Planning the API](#planning-the-api)
-3. [Features](#features)
-4. [Installation](#installation)
-3. [Usage](#usage)
-4. [License](#license)
-5. [Acknowledgements](#acknowledgements)
+2. [Technologies Used](#technologies-used)
+3. [API Overview](#api-overview)
+4. [Endpoints](#endpoints)
+5. [JSON Structure](#json-structure)
+6. [Installation](#installation)
+7. [Usage](#usage)
+8. [License](#license)
+9. [Acknowledgements](#acknowledgements)
 
 ## Introduction
-A backend REST API that allows users to book, update, retrieve, and delete appointments with doctors.
+Appointment-API is a backend REST API that enables users to book, update, retrieve, and delete appointments with doctors. With Appointment-API, users can easily schedule and manage their appointments with doctors in a convenient and efficient manner.
 
-## Languages and Tools
-1. JavaScript
-2. Node.JS (Runtime Environment)
-3. Express (Node.js web application framework)
-4. MySQL
-5. Docker
-6. PostMan or 'Any other platform' (API Platform for developers to design, build, test and iterate their APIs)
+## Technologies Used
+- JavaScript
+- Node.js (Runtime Environment)
+- Express (Node.js web application framework)
+- MongoDB (Database)
+- Mongoose (MongoDB Object Data Modeling library)
+- Docker
+- Postman (API Platform for designing, building, testing, and iterating APIs)
 
+## API Overview
+This API follows a RESTful approach, providing endpoints for the standard CRUD operations: create, read, update, and delete. The API is versioned with "/api/v1" as the prefix, and the resource being accessed is "appointments". By adhering to a well-defined URL structure, developers can easily interact with the API and build applications that consume it.
 
-## Planning the API
-- In this example, we're using a RESTful API approach with endpoints that correspond to the standard CRUD operations (create, read, update, and delete). 
-- We're using the "/api/v1" prefix to denote that this is the first version of the API, and we're specifying the resource being accessed (appointments). 
-- By using a consistent and well-defined URL structure, we can make it easy for developers to interact with the API and build applications that consume it.
-- A router and endpoints defined for a backend REST API used to manage the booking of appointments with doctors. 
+## Endpoints
+The following URL endpoints are available for the Appointment-API:
 
-###  URL endpoints for a Backend REST API for booking appointments with doctors:
+- GET http://localhost:'PORT'/api/v1/appointments - Retrieves a list of all appointments.
+- GET http://localhost:'PORT'/api/v1/appointments/:id - Retrieves the details of a specific appointment.
+- POST http://localhost:'PORT'/api/v1/appointments - Creates a new appointment.
+- PUT http://localhost:'PORT'/api/v1/appointments/:id - Updates the details of a specific appointment.
+- DELETE http://localhost:'PORT'/api/v1/appointments/:id - Deletes a specific appointment.
 
-- GET http://localhost:'PORT'/api/v1/appointments – This will retrieve a list of all appointments.
-
-- GET http://localhost:'PORT'/api/v1/appointments/101 – This will retrieve the details of appointment 101.
-
-- POST http://localhost:'PORT'/api/v1/appointments – This will create a new appointment.
-
-- PUT http://localhost:'PORT'/api/v1/appointments/101 – This will update the details of appointment 101.
-
-- DELETE http://localhost:'PORT'/api/v1/appointments/101 – This will delete appointment 101.
-
-###  JSON Structure:
-- Each record will contain the following details:
-
-1. an ID of the appointment
-2. date and time of appointment
-3. patient ID
-4. doctor ID
-5. appointment type (e.g., physical examination, follow-up, consultation)
-
-
-## Features
-- 
-- 
-- 
-- 
-
+## JSON Structure
+Each appointment record in the API follows the structure defined by the Mongoose schema:
+`
+{
+    appointment_sl_id: Number,
+    doctor_id: Number,
+    patient_id: Number,
+    duration: Number,
+    reason: String,
+    status: String,
+    createdAt: Date,
+    updatedAt: Date
+}
+`
 ## Installation
-<!-- To use this project, simply clone the repository and open the index.html file in your browser.
+To use this project, follow these steps:
 
-`git clone https://github.com/your-username/etch-a-sketch.git` -->
+1. Clone the repository: `git clone https://github.com/your-username/appointment-api.git`
+2. Install the dependencies: `npm install`
+3. Set up the MongoDB database and configure the connection in the code.
+4. Run the server: `nodemon index.js`
 
 ## Usage
-- 
--  
-- 
-- 
+Once the server is running, you can make HTTP requests to the defined endpoints using tools like Postman. The API allows you to manage appointments with doctors, including creating new appointments, updating existing ones, retrieving appointment details, and deleting appointments.
 
 ## License
-- This project is licensed under the ISC license - see the LICENSE.md file for details.
+This project is licensed under the ISC license. See the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgements
-- [How to Build a RESTful API in Node.js (with Express.js) By Kelly Arellano](https://rapidapi.com/blog/nodejs-express-rest-api-example/)
+- [How to Build a RESTful API in Node.js (with Express.js) by Kelly Arellano](https://rapidapi.com/blog/nodejs-express-rest-api-example/)
