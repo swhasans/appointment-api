@@ -2,7 +2,7 @@ const fs = require("fs");
 const Appointment = require("../models/appointment.js");
 const appointmentsFilePath = "./routes/appointments.json";
 
-//GET method (ALL!)
+// GET method (Fetches all appointments)
 const getAllAppointment = (req, res) => {
     Appointment.find().sort({ appointment_sl_id: -1 })
         .then((result) => {
@@ -13,7 +13,7 @@ const getAllAppointment = (req, res) => {
         });
 };
 
-// GET method
+// GET method (Fetches a specific appointment by ID)
 const getAppointment = (req, res) => {
     const appointment_sl_id = req.params.id;
     Appointment.findOne({ appointment_sl_id: appointment_sl_id })
@@ -25,7 +25,7 @@ const getAppointment = (req, res) => {
         });
 };
 
-// POST method
+// POST method (Creates a new appointment)
 const createAppointment = (req, res) => {
     const appointment = new Appointment({
         doctor_id: req.body.doctor_id,
@@ -45,7 +45,7 @@ const createAppointment = (req, res) => {
         });
 };
 
-// PUT method
+// PUT method (Updates an existing appointment by ID)
 const updateAppointment = (req, res) => {
     const appointment_sl_id = req.params.id;
 
@@ -67,7 +67,7 @@ const updateAppointment = (req, res) => {
         });
 };
 
-// DELETE method
+// DELETE method (Deletes an appointment by ID)
 const deleteAppointment = (req, res) => {
     const appointment_sl_id = req.params.id;
     Appointment.findOneAndDelete({ appointment_sl_id: appointment_sl_id })
@@ -80,9 +80,9 @@ const deleteAppointment = (req, res) => {
 };
 
 module.exports = {
-    getAllAppointment, // Fetches all appointments
-    getAppointment, // Fetches a specific appointment by ID
-    createAppointment, // Creates a new appointment
-    updateAppointment, // Updates an existing appointment by ID
-    deleteAppointment // Deletes an appointment by ID
+    getAllAppointment,
+    getAppointment,
+    createAppointment,
+    updateAppointment,
+    deleteAppointment
 };
