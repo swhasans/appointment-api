@@ -15,10 +15,6 @@ const appointmentSchema = new Schema({
         type: Number,
         required: true // The body field is required
     },
-    appointment_time: {
-        type: Date,
-        required: true // The body field is required
-    },
     duration: {
         type: Number,
         required: true // The body field is required
