@@ -17,13 +17,13 @@ const port = 3000; // Specify the port number for the server
 // Connect to MongoDB
 const dbURI = `mongodb+srv://${DB_USERNAME}:${DB_USERPASS}@nodeexpressapp.ghra5em.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }) // Connect to MongoDB using the provided URI and options
-    .then((results) => {
-        // Start the server and listen for requests on the specified port
-        app.listen(port, "localhost", () => {
-            console.log(`Connected to DB: '${DB_NAME}' | Listening for requests on port: '${port}'`);
-        });
-    })
-    .catch((err) => console.log(err));
+  .then((results) => {
+    // Start the server and listen for requests on the specified port
+    app.listen(port, "localhost", () => {
+      console.log(`Connected to DB: '${DB_NAME}' | Listening for requests on port: '${port}'`);
+    });
+  })
+  .catch((err) => console.log(err));
 
 // Middleware
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
