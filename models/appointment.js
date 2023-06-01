@@ -3,7 +3,7 @@ const Schema = mongoose.Schema; // Create a Schema object from Mongoose
 
 // Define the blog schema
 const appointmentSchema = new Schema({
-    id: {
+    appointment_sl_id: {
         type: Number,
         required: true // The title field is required
     },

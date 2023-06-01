@@ -3,7 +3,7 @@ const Appointment = require("../models/appointment.js");
 const appointmentsFilePath = "./routes/appointments.json";
 
 //GET method (ALL!)
-const getAllAppointment = (req, res, next) => {
+const getAllAppointment = (req, res) => {
     Appointment.find().sort({ createdAt: -1 })
                .then((result) => {
                     res.send(result);
@@ -14,22 +14,31 @@ const getAllAppointment = (req, res, next) => {
 };
 
 // GET method
-const getAppointment = (req, res, next) => {
-    try {
-        const data = fs.readFileSync(appointmentsFilePath);
-        const appointments = JSON.parse(data);
-        const appointment = appointments.find(
-            (appointment) => appointment.id === Number(req.params.id)
-        );
-        if (!appointment) {
-            const err = new Error("Appointment not found");
-            err.status = 404;
-            throw err;
-        }
-        res.json(appointment);
-    } catch (e) {
-        next(e);
-    }
+const getAppointment = (req, res) => {
+    const appointment_sl_id = req.params.id;
+    Appointment.findOne({ appointment_sl_id: appointment_sl_id})
+               .then((result) => {
+                    res.send(result);
+               })
+               .catch((err) =>{
+                    console.log(err);
+               });
+
+    // try {
+    //     const data = fs.readFileSync(appointmentsFilePath);
+    //     const appointments = JSON.parse(data);
+    //     const appointment = appointments.find(
+    //         (appointment) => appointment.id === Number(req.params.id)
+    //     );
+    //     if (!appointment) {
+    //         const err = new Error("Appointment not found");
+    //         err.status = 404;
+    //         throw err;
+    //     }
+    //     res.json(appointment);
+    // } catch (e) {
+    //     next(e);
+    // }
 };
 
 // POST method
