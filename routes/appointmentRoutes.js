@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const appointmentController = require("../controllers/appointmentControllers.js");
+const appointmentController = require("../controllers/appointmentController.js");
 
 // GET method to fetch all appointments
 router.get("/api/v1/appointments", appointmentController.getAllAppointment);
