@@ -3,12 +3,12 @@ const jwt = require("jsonwebtoken");
 
 // GET method (Fetches signup page)
 const getSignUp = (req, res) => {
-    res.render('signup');
+    res.send('signup.ejs: This Is New User Sign Up Page');
 };
 
 // GET method (Fetches a specific user by ID)
 const getLogIn = (req, res) => {
-    res.render('login');
+    res.send('login.ejs: This Is User Log In Page');
 };
 
 // POST method (Creates a new user)
