@@ -1,7 +1,6 @@
 const express = require("express"); // Import the Express module 
 const morgan = require("morgan"); // Import the Morgan module for logging HTTP requests
 const appointmentRoutes = require("./routes/appointmentRoutes.js"); // Import the appointmentRoutes module
-const bodyParser = require('body-parser'); // Import the bodyParser module for parsing JSON request bodies
 const mongoose = require("mongoose"); // Import the Mongoose module for MongoDB connection
 
 // MongoDB Credentials
@@ -29,7 +28,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }) // 
 // Middleware
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
 app.use(morgan("dev")); // Log HTTP requests in the console using Morgan
-app.use(bodyParser.json()); // Parse JSON request bodies
+app.use(express.json()); // Parse JSON request bodies
 
 app.use('/', appointmentRoutes); // Use appointmentRoutes for handling routes starting with '/'
 
