@@ -21,7 +21,6 @@ const postSignUp = async(req, res) => {
         res.status(400).send('Sorry, could not register user.');
     }
     console.log(`Email : ${email} & Password : ${password}`);
-    res.send(`New Employee SignUp -> Email : ${email} & Password : ${password}`); // Send a response for successful user signup
 };
 
 // POST method (User login)
