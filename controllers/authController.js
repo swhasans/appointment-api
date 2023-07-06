@@ -1,5 +1,4 @@
 const User = require("../models/user.js");
-const jwt = require("jsonwebtoken");
 
 // GET method (Fetches signup page)
 const getSignUp = (req, res) => {
