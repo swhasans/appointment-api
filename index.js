@@ -37,7 +37,8 @@ app.use(authRoutes); // Use the authentication routes
 
 //Cookies
 app.get("/set-cookies", (req, res) => {
-  res.setHeader("Set-Cookie", "newUser=true");
+  res.cookie("newUser", false);
+  res.cookie("isEmployee", true, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true });
   res.send("You got the cookie!");
 });
 
