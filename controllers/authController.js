@@ -13,11 +13,15 @@ const getLogIn = (req, res) => {
 
 // POST method (Creates a new user)
 const postSignUp = (req, res) => {
+    const {email, password} = req.body;
+    console.log(`Email : ${email} & Password : ${password}`);
     res.send('new signup'); // Send a response for successful user signup
 };
 
 // POST method (User login)
 const postLogIn = (req, res) => {
+    const {email, password} = req.body;
+    console.log(`Email : ${email} & Password : ${password}`);
     res.send('user login'); // Send a response for successful user login
 };
  
