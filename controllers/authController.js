@@ -11,16 +11,17 @@ const getLogIn = (req, res) => {
 };
 
 // POST method (Creates a new user)
-const postSignUp = aysnc (req, res) => {
+const postSignUp = async(req, res) => {
     const {email, password} = req.body;
     try{
         const user = await User.create({email, password});
         res.status(201).json(user);
     }catch(err){
         console.log(err);
+        res.status(400).send('Sorry, could not register user.');
     }
     console.log(`Email : ${email} & Password : ${password}`);
-    res.send('new signup'); // Send a response for successful user signup
+    res.send(`New Employee SignUp -> Email : ${email} & Password : ${password}`); // Send a response for successful user signup
 };
 
 // POST method (User login)
