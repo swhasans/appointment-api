@@ -3,6 +3,7 @@ const morgan = require("morgan"); // Import the Morgan module for logging HTTP r
 const appointmentRoutes = require("./routes/appointmentRoutes.js"); // Import the appointmentRoutes module
 const mongoose = require("mongoose"); // Import the Mongoose module for MongoDB connection
 const authRoutes = require("./routes/authRoutes"); // Import the authentication routes
+const cookieParser = require("cookie-parser");
 
 // MongoDB Credentials
 require("dotenv").config();
