@@ -1,5 +1,10 @@
 const User = require("../models/user.js");
 
+// Handle Errors
+const handleErrors = (err) => {
+    console.timeLog(err.message, err.code);
+}
+
 // GET method (Fetches signup page)
 const getSignUp = (req, res) => {
     res.send('signup.ejs: This Is New User Sign Up Page');
@@ -17,7 +22,7 @@ const postSignUp = async(req, res) => {
         const user = await User.create({email, password});
         res.status(201).json(user);
     }catch(err){
-        console.log(err);
+        handleErrors(err);
         res.status(400).send('Sorry, could not register user.');
     }
     console.log(`Email : ${email} & Password : ${password}`);
