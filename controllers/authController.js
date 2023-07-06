@@ -11,8 +11,14 @@ const getLogIn = (req, res) => {
 };
 
 // POST method (Creates a new user)
-const postSignUp = (req, res) => {
+const postSignUp = aysnc (req, res) => {
     const {email, password} = req.body;
+    try{
+        const user = await User.create({email, password});
+        res.status(201).json(user);
+    }catch(err){
+        console.log(err);
+    }
     console.log(`Email : ${email} & Password : ${password}`);
     res.send('new signup'); // Send a response for successful user signup
 };
