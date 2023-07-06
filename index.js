@@ -2,6 +2,7 @@ const express = require("express"); // Import the Express module
 const morgan = require("morgan"); // Import the Morgan module for logging HTTP requests
 const appointmentRoutes = require("./routes/appointmentRoutes.js"); // Import the appointmentRoutes module
 const mongoose = require("mongoose"); // Import the Mongoose module for MongoDB connection
+const authRoutes = require("./routes/authRoutes"); // Import the authentication routes
 
 // MongoDB Credentials
 require("dotenv").config();
@@ -31,6 +32,7 @@ app.use(morgan("dev")); // Log HTTP requests in the console using Morgan
 app.use(express.json()); // Parse JSON request bodies
 
 app.use('/', appointmentRoutes); // Use appointmentRoutes for handling routes starting with '/'
+app.use(authRoutes); // Use the authentication routes
 
 // Render the "404" view for any unmatched routes (404 Not Found)
 app.use((req, res) => {

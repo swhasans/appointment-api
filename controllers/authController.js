@@ -13,12 +13,12 @@ const getLogIn = (req, res) => {
 
 // POST method (Creates a new user)
 const postSignUp = (req, res) => {
-    res.send('new signup');
+    res.send('new signup'); // Send a response for successful user signup
 };
 
-
+// POST method (User login)
 const postLogIn = (req, res) => {
-    res.send('user login');
+    res.send('user login'); // Send a response for successful user login
 };
  
 const getLogout = (req, res) => {
