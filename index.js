@@ -34,6 +34,16 @@ app.use(express.json()); // Parse JSON request bodies
 app.use('/', appointmentRoutes); // Use appointmentRoutes for handling routes starting with '/'
 app.use(authRoutes); // Use the authentication routes
 
+//Cookies
+app.get("/set-cookies", (req, res) => {
+  res.setHeader("Set-Cookie", "newUser=true");
+  res.send("You got the cookie!");
+});
+
+app.get("/read-cookies", (req, res) => {
+
+});
+
 // Render the "404" view for any unmatched routes (404 Not Found)
 app.use((req, res) => {
   res.status(404).render("404", { title: "Not Found" });
