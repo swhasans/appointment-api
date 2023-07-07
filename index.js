@@ -45,8 +45,8 @@ app.get("/set-cookies", (req, res) => {
 
 app.get("/read-cookies", (req, res) => {
   const cookies = req.cookies;
-  console.log(cookies);
-
+  console.log("New User : " + cookies.newUser);
+  console.log("Is Employee : " + cookies.isEmployee);
   res.json(cookies);
 });
 
