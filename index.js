@@ -31,6 +31,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }) // 
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
 app.use(morgan("dev")); // Log HTTP requests in the console using Morgan
 app.use(express.json()); // Parse JSON request bodies
+app.use(cookieParser());
 
 app.use('/', appointmentRoutes); // Use appointmentRoutes for handling routes starting with '/'
 app.use(authRoutes); // Use the authentication routes
@@ -43,7 +44,10 @@ app.get("/set-cookies", (req, res) => {
 });
 
 app.get("/read-cookies", (req, res) => {
+  const cookies = req.cookies;
+  console.log(cookies);
 
+  res.json(cookies);
 });
 
 // Render the "404" view for any unmatched routes (404 Not Found)
