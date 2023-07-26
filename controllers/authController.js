@@ -21,6 +21,13 @@ const handleErrors = (err) => {
     return errors;
 }
 
+const maxAge = 1 * 24 * 60 * 60;
+const createToken = (id) => {
+    return jwt.sign({ id }, "swhasan secret", {
+        expiresIn: maxAge
+    });
+};
+
 // GET method (Fetches signup page)
 const getSignUp = (req, res) => {
     res.send('signup.ejs: This Is New User Sign Up Page');
