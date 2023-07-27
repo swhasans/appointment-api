@@ -43,10 +43,11 @@ const postSignUp = async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.create({ email, password });
+        
         res.status(201).json(user);
     } catch (err) {
-        handleErrors(err);
-        res.status(400).send('Sorry, could not register user.');
+        const error = handleErrors(err);
+        res.status(400).send({error});
     }
     console.log(`Email : ${email} & Password : ${password}`);
 };
