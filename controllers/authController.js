@@ -18,6 +18,15 @@ const handleErrors = (err) => {
         });
     }
 
+    //incorrect email
+	if (err.message === "Incorrect Email") {
+		errors.email = "That email is not registered";
+	}
+
+	//incorrect password
+	if (err.message === "Incorrect Password") {
+		errors.password = "That password is incorrect";
+	}
     return errors;
 }
 
@@ -54,10 +63,15 @@ const postSignUp = async (req, res) => {
 };
 
 // POST method (User login)
-const postLogIn = (req, res) => {
-    const { email, password } = req.body;
-    console.log(`Email : ${email} & Password : ${password}`);
-    res.send('user login'); // Send a response for successful user login
+const postLogIn = async (req, res) => {
+	const { email, password } = req.body;
+
+	try {
+		const user = await User.login(email, password);
+		res.status(200).json({ user: user._id });
+	} catch (err) {
+		res.status(400).json({});
+	}
 };
 
 const getLogout = (req, res) => {
