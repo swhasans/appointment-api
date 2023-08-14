@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const {requireAuth} = require("../middleware/authMiddleware");
 
 const appointmentController = require("../controllers/appointmentController.js");
 
 // GET method to fetch all appointments
-router.get("/api/v1/appointments", appointmentController.getAllAppointment);
+router.get("/api/v1/appointments", requireAuth, appointmentController.getAllAppointment);
 
 // GET method to fetch a specific appointment by ID
 router.get("/api/v1/appointments/:id", appointmentController.getAppointment);

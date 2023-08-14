@@ -30,7 +30,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }) // 
 // Middleware
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
 app.use(morgan("dev")); // Log HTTP requests in the console using Morgan
-app.use(express.json()); // Parse JSON request bodies
+app.use(express.json()); // Parse JSON request bodies 
 app.use(cookieParser());
 
 app.use('/', appointmentRoutes); // Use appointmentRoutes for handling routes starting with '/'
