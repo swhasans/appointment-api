@@ -1,53 +1,74 @@
 const User = require("../models/user.js");
 const jwt = require("jsonwebtoken");
 
-// Handle Errors
+/**
+ * Handle various errors that can occur during user authentication.
+ * @param {Error} err - Error object
+ * @returns {Object} errors - Detailed error messages for specific error types.
+ */
 const handleErrors = (err) => {
-    console.timeLog(err.message, err.code);
+    console.log(err.message, err.code);
     let errors = { email: "", password: "" };
 
-    //duplicate error code
+    // Handle duplicate email errors
     if (err.code === 11000) {
         errors.email = "That email is already registered";
         return errors;
     }
-    //validation errors
+
+    // Handle validation errors
     if (err.message.includes("user validation failed")) {
         Object.values(err.errors).forEach(({ properties }) => {
             errors[properties.path] = properties.message;
         });
     }
 
-    //incorrect email
+    // Handle incorrect email errors
     if (err.message === "Incorrect Email") {
         errors.email = "That email is not registered";
     }
 
-    //incorrect password
+    // Handle incorrect password errors
     if (err.message === "Incorrect Password") {
         errors.password = "That password is incorrect";
     }
+    
     return errors;
 }
 
+/**
+ * Token expiration time.
+ */
 const maxAge = 1 * 24 * 60 * 60;
+
+/**
+ * Create JWT token for user authentication.
+ * @param {String} id - User ID
+ * @returns {String} - JWT token
+ */
 const createToken = (id) => {
     return jwt.sign({ id }, "swhasan secret", {
         expiresIn: maxAge
     });
 };
 
-// GET method (Fetches signup page)
+/**
+ * Render the sign-up page.
+ */
 const getSignUp = (req, res) => {
     res.send('Sign Up Page 📝');
 };
 
-// GET method (Fetches a specific user by ID)
+/**
+ * Render the log-in page.
+ */
 const getLogIn = (req, res) => {
     res.send('Log In Page 🔐');
 };
 
-// POST method (Creates a new user)
+/**
+ * Handle user sign-up, create a new user.
+ */
 const postSignUp = async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -62,7 +83,9 @@ const postSignUp = async (req, res) => {
     console.log(`Email : ${email} & Password : ${password}`);
 };
 
-// POST method (User login)
+/**
+ * Handle user log-in.
+ */
 const postLogIn = async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -76,9 +99,13 @@ const postLogIn = async (req, res) => {
     }
 };
 
+/**
+ * Handle user logout.
+ * Invalidate the JWT token by setting its maxAge to a negligible value.
+ */
 const getLogout = (req, res) => {
     res.cookie("jwt", "", { maxAge: 1 });
-    res.redirect("/");
+    res.send("Successfully logged out. Redirecting to the login page 🍪❌");
 };
 
 module.exports = {
