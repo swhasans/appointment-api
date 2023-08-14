@@ -19,14 +19,14 @@ const handleErrors = (err) => {
     }
 
     //incorrect email
-	if (err.message === "Incorrect Email") {
-		errors.email = "That email is not registered";
-	}
+    if (err.message === "Incorrect Email") {
+        errors.email = "That email is not registered";
+    }
 
-	//incorrect password
-	if (err.message === "Incorrect Password") {
-		errors.password = "That password is incorrect";
-	}
+    //incorrect password
+    if (err.message === "Incorrect Password") {
+        errors.password = "That password is incorrect";
+    }
     return errors;
 }
 
@@ -54,30 +54,31 @@ const postSignUp = async (req, res) => {
         const user = await User.create({ email, password });
         const token = createToken(user._id);
         res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(201).json({user: user._id});
+        res.status(201).json({ user: user._id });
     } catch (err) {
         const error = handleErrors(err);
-        res.status(400).send({error});
+        res.status(400).send({ error });
     }
     console.log(`Email : ${email} & Password : ${password}`);
 };
 
 // POST method (User login)
 const postLogIn = async (req, res) => {
-	const { email, password } = req.body;
-	try {
-		const user = await User.login(email, password);
-		const token = createToken(user._id);
-		res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-		res.status(200).json({ user: user._id });
-	} catch (err) {
-		const errors = handleErrors(err);
-		res.status(400).json({ errors });
-	}
+    const { email, password } = req.body;
+    try {
+        const user = await User.login(email, password);
+        const token = createToken(user._id);
+        res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+        res.status(200).json({ user: user._id });
+    } catch (err) {
+        const errors = handleErrors(err);
+        res.status(400).json({ errors });
+    }
 };
 
 const getLogout = (req, res) => {
-
+    res.cookie("jwt", "", { maxAge: 1 });
+    res.redirect("/");
 };
 
 module.exports = {
