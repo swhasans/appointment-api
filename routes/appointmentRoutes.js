@@ -8,15 +8,15 @@ const appointmentController = require("../controllers/appointmentController.js")
 router.get("/api/v1/appointments", requireAuth, appointmentController.getAllAppointment);
 
 // GET method to fetch a specific appointment by ID
-router.get("/api/v1/appointments/:id", appointmentController.getAppointment);
+router.get("/api/v1/appointments/:id", requireAuth, appointmentController.getAppointment);
 
 // POST method to create a new appointment
-router.post("/api/v1/appointments", appointmentController.createAppointment);
+router.post("/api/v1/appointments", requireAuth, appointmentController.createAppointment);
 
 // PUT method to update an existing appointment by ID
-router.put("/api/v1/appointments/:id", appointmentController.updateAppointment);
+router.put("/api/v1/appointments/:id", requireAuth, appointmentController.updateAppointment);
 
 // DELETE method to delete an appointment by ID
-router.delete("/api/v1/appointments/:id", appointmentController.deleteAppointment);
+router.delete("/api/v1/appointments/:id", requireAuth, appointmentController.deleteAppointment);
 
 module.exports = router;

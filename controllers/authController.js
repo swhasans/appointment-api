@@ -39,12 +39,12 @@ const createToken = (id) => {
 
 // GET method (Fetches signup page)
 const getSignUp = (req, res) => {
-    res.send('signup.ejs: This Is New User Sign Up Page');
+    res.send('Sign Up Page 📝');
 };
 
 // GET method (Fetches a specific user by ID)
 const getLogIn = (req, res) => {
-    res.send('login.ejs: This Is User Log In Page');
+    res.send('Log In Page 🔐');
 };
 
 // POST method (Creates a new user)

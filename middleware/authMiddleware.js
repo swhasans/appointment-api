@@ -15,7 +15,7 @@ const requireAuth = (req, res, next) => {
             if (err) {
                 // If token verification fails, log the error and redirect the user to the login page.
                 console.log(`Token verification failed: ${err.message}`);
-                res.send('You need to be logged in to access this. Please log in.');
+                res.send('You need to be logged in to access this. Please log in. 🔐');
             } else {
                 // If token verification is successful, log the decoded token (optional) and proceed.
                 console.log(`Decoded token: ${decodedToken}`);
@@ -24,7 +24,7 @@ const requireAuth = (req, res, next) => {
         });
     } else {
         // If no token is provided, redirect the user to the login page.
-        res.send('No authentication token found. Please log in to continue.');
+        res.send('No authentication token found. Please log in to continue. 🔐');
     }
 };
 
