@@ -32,7 +32,7 @@ const handleErrors = (err) => {
     if (err.message === "Incorrect Password") {
         errors.password = "That password is incorrect";
     }
-    
+
     return errors;
 }
 
