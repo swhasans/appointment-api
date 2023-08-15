@@ -21,19 +21,19 @@ Appointment - API is a backend REST API that enables users to book, update, retr
 ## Technologies Used
 
     - JavaScript
-    - Node.js(Runtime Environment)
-    - Express(Node.js web application framework)
-    - MongoDB(Database)
-    - Mongoose(MongoDB Object Data Modeling library)
+    - Node.js (Runtime Environment)
+    - Express (Node.js web application framework)
+    - MongoDB (Database)
+    - Mongoose (MongoDB Object Data Modeling library)
     - Docker*
-    - Postman(API Platform for designing, building, testing, and iterating APIs)
-    - JSON Web Token(for authentication)
-    - bcrypt(for password hashing)
-    - validator(for email validation)
+    - Postman (API Platform for designing, building, testing, and iterating APIs)
+    - JSON Web Token (authentication)
+    - bcrypt (password hashing)
+    - validator (email validation)
 
 ## Authentication & Authorization
 
-Appointment - API uses JWT(JSON Web Tokens) for user authentication.Users need to be logged in to get a JWT token, which then allows them to access the appointment routes.If not logged in, users will need to sign up, after which a JWT token will be assigned to them.
+Appointment - API uses JWT(JSON Web Tokens) for user authentication.Users need to be logged in to get a JWT token, which then allows them to access the appointment routes. If not logged in, users will need to sign up, after which a JWT token will be assigned to them.
 
 Passwords stored in MongoDB are encrypted using the bcrypt library.A salt is generated and then passed, along with the original password, to produce a hashed version, ensuring the safety of user passwords.
 
@@ -41,7 +41,7 @@ Emails are validated during sign - up using the validator library, ensuring that
 
 ## API Overview
 
-This API follows a RESTful approach, providing endpoints for the standard CRUD operations: create, read, update, and delete.The API is versioned with "/api/v1" as the prefix, and the resource being accessed is "appointments".By adhering to a well - defined URL structure, developers can easily interact with the API and build applications that consume it.
+This API follows a RESTful approach, providing endpoints for the standard CRUD operations: create, read, update, and delete.The API is versioned with "/api/v1" as the prefix, and the resource being accessed is "appointments". By adhering to a well - defined URL structure, developers can easily interact with the API and build applications that consume it.
 
 ## Endpoints & Routes
 
@@ -106,14 +106,17 @@ Once the server is running, you can make HTTP requests to the defined endpoints 
 
 ## Error Handling
 
-The API is equipped with a`handleErrors` function that provides detailed error messages for specific error types, aiding in a smoother developer experience and efficient debugging.
+The API is equipped with a `handleErrors` function that provides detailed error messages for specific error types, aiding in a smoother developer experience and efficient debugging.
 
 ## License
 
-This project is licensed under the ISC license.See the[LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the ISC license. See the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgements
 
 - [How to Build a RESTful API in Node.js(with Express.js) by Kelly Arellano](https://rapidapi.com/blog/nodejs-express-rest-api-example/)
 - [Node.js Crash Course Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU)
 - [Node.js Auth Tutorial(JWT)](https://youtube.com/playlist?list=PL4cUxeGkcC9iqqESP8335DA5cRFp8loyp)
+
+> **Note**
+> : The features or components marked with an asterisk (*) are currently in development and will be available in future iterations of the API.
