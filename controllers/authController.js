@@ -105,6 +105,8 @@ const postLogIn = async (req, res) => {
  */
 const getLogout = (req, res) => {
     res.cookie("jwt", "", { maxAge: 1 });
+    res.cookie("newUser", "", { maxAge: 1 });
+    res.cookie("isEmployee", "", { maxAge: 1 });
     res.send("Successfully logged out. Redirecting to the login page 🍪❌");
 };
 
