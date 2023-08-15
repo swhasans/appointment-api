@@ -90,6 +90,7 @@ Each user record in the API follows the structure defined by the Mongoose schema
     password: String
 }
 ```
+
 ## Installation
 
 To use this project, follow these steps:
