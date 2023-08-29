@@ -34,7 +34,7 @@ Appointment - API is a backend REST API that enables users to book, update, retr
 
 ## Authentication & Authorization
 
-Appointment - API uses JWT(JSON Web Tokens) for user authentication.Users need to be logged in to get a JWT token, which then allows them to access the appointment routes. If not logged in, users will need to sign up, after which a JWT token will be assigned to them.
+Appointment - API uses JWT (JSON Web Tokens) for user authentication. Users need to be logged in to get a JWT token, which then allows them to access the appointment routes. If not logged in, users will need to sign up, after which a JWT token will be assigned to them.
 
 Passwords stored in MongoDB are encrypted using the bcrypt library.A salt is generated and then passed, along with the original password, to produce a hashed version, ensuring the safety of user passwords.
 
@@ -103,7 +103,7 @@ To use this project, follow these steps:
 
 ## Usage
 
-Once the server is running, you can make HTTP requests to the defined endpoints using tools like Postman.The API allows you to manage appointments with doctors, including creating new appointments, updating existing ones, retrieving appointment details, and deleting appointments.
+Once the server is running, you can make HTTP requests to the defined endpoints using tools like Postman. The API allows you to manage appointments with doctors, including creating new appointments, updating existing ones, retrieving appointment details, and deleting appointments.
 
 ## Error Handling
 
