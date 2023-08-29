@@ -118,7 +118,10 @@ As the application continues to evolve, there are several tasks that are current
 - [ ] **Dockerfile Creation**: Develop a Dockerfile to containerize the application.
 - [ ] **Docker Image Building**: Build the Docker image from the created Dockerfile.
 - [ ] **Local Docker Image Testing**: Ensure the Docker image runs correctly when executed locally.
-
+- [ ] **Pushing Docker Image**: Push the built Docker image to a container registry (e.g., Docker Hub).
+- [ ] **Docker Compose Integration**: Develop a `docker-compose.yml` file to orchestrate the application along with its dependencies, such as MongoDB.
+- [ ] **Docker Compose Testing**: Validate the application's functionality using the docker-compose setup.
+- [ ] **README.md Update**: Augment this README.md with instructions detailing how users can run the application using Docker and docker-compose.
 
 ## License
 
