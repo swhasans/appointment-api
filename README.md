@@ -11,8 +11,9 @@
 7. [Installation](#installation)
 8. [Usage](#usage)
 9. [Error Handling](#error-handling)
-10. [License](#license)
-11. [Acknowledgements](#acknowledgements)
+10. [Pending Tasks](#pending-tasks)
+11. [License](#license)
+12. [Acknowledgements](#acknowledgements)
 
 ## Introduction
 
@@ -117,6 +118,20 @@ This project is licensed under the ISC license. See the [LICENSE.md](LICENSE.md)
 - [How to Build a RESTful API in Node.js(with Express.js) by Kelly Arellano](https://rapidapi.com/blog/nodejs-express-rest-api-example/)
 - [Node.js Crash Course Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU)
 - [Node.js Auth Tutorial(JWT)](https://youtube.com/playlist?list=PL4cUxeGkcC9iqqESP8335DA5cRFp8loyp)
+
+## Pending Tasks
+
+As the application continues to evolve, there are several tasks that are currently pending completion:
+
+### Docker Integration
+
+1. **Dockerfile Creation**: Develop a Dockerfile to containerize the application.
+2. **Docker Image Building**: Build the Docker image from the created Dockerfile.
+3. **Local Docker Image Testing**: Ensure the Docker image runs correctly when executed locally.
+4. **Pushing Docker Image**: Push the built Docker image to a container registry (e.g., Docker Hub).
+5. **Docker Compose Integration**: Develop a `docker-compose.yml` file to orchestrate the application along with its dependencies, such as MongoDB.
+6. **Docker Compose Testing**: Validate the application's functionality using the docker-compose setup.
+7. **README.md Update**: Augment this README.md with instructions detailing how users can run the application using Docker and docker-compose.
 
 > **Note**
 > : The features or components marked with an asterisk (*) are currently in development and will be available in future iterations of the API.
